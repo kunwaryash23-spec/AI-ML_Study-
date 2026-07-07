@@ -1,0 +1,6 @@
+print(10 // 3, 10 % 3)
+print(7 % 2)
+print(2 ** 5)
+print(3 * 4)
+print(bool(""))
+print(bool("AI"))
