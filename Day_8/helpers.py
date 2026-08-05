@@ -3,3 +3,4 @@ import json
 #     return f"hello {name}"
 
 print(json.dumps({1:"x"}))
+print(json.dumps([1,2]))
