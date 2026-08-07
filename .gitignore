@@ -47,6 +47,10 @@ desktop.ini
 !.env.example
 *.key
 *.pem
+api.txt
+api_key*.txt
+*_secret*
+credentials.json
 
 # ---- Model / data artifacts (uncomment if these get large) ----
 # *.h5

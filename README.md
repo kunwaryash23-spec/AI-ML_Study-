@@ -6,7 +6,7 @@ Working repo for my AI/ML engineering study. Python, scikit-learn, pandas, and n
 
 | Path | What's in it |
 |---|---|
-| `Day_1/` … `Day_21/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
+| `Day_1/` … `Day_22/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
 | `Notebooks/` | Larger standalone projects and topic deep-dives that span more than one day. |
 | `datasets/` | Datasets used by the notebooks. |
 | `csv files/` | Loose CSVs from earlier pandas practice. |
@@ -23,6 +23,9 @@ pandas (`groupby`, merges, feature engineering), SQL practice (`Learning_SQL.ipy
 
 **Day 21 — neural networks**
 `MLPClassifier`, loss curves, and learning-rate behavior.
+
+**Day 22 — image classification**
+Handwritten digits (`load_digits`). Logistic-regression baseline vs. MLP, confusion matrices, and a cross-validated sweep of hidden-layer sizes.
 
 ## Setup
 
