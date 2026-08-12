@@ -10,3 +10,4 @@ These are written automatically by the daily GitHub sync task. On days with no n
 |---|---|
 | [2026-08-06](2026-08-06.md) | No new work. Recap of Day 21 loss curves + scaler data-leak note. |
 | [2026-08-07](2026-08-07.md) | Day 22 — digit recognition. LogReg 0.978 beat MLP 0.962; hidden-size CV sweep. |
+| [2026-08-13](2026-08-13.md) | Days 23–26 + first project. TF-IDF → embeddings → RAG → LLM call; lyrics retriever. **Leaked API key scrubbed — rotate it.** |

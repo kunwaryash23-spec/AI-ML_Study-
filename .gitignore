@@ -49,6 +49,10 @@ desktop.ini
 *.pem
 api.txt
 api_key*.txt
+# any file with 'api' in the name (covers "gemini api.txt", "openai api key.txt", ...)
+*api*.txt
+*api*.json
+*token*.txt
 *_secret*
 credentials.json
 
