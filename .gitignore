@@ -56,6 +56,17 @@ api_key*.txt
 *_secret*
 credentials.json
 
+# ---- Downloaded archives ----
+# Source archives you download to read/reference. Keep the extracted, useful
+# files in the repo instead of the multi-MB zip. If you ever need to commit a
+# specific archive, force it with: git add -f path/to/file.zip
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
 # ---- Model / data artifacts (uncomment if these get large) ----
 # *.h5
 # *.pkl
