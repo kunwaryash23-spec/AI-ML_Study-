@@ -67,6 +67,29 @@ credentials.json
 *.rar
 *.7z
 
+# ---- Node / JS (video-search frontend) ----
+node_modules/
+dist/
+*.tsbuildinfo
+
+# ---- Vendored third-party source ----
+# Reference code downloaded from elsewhere. Read it, learn from it, but it is
+# not your work and it does not belong in your history. 60 MB of someone else's
+# repo makes every future clone slower for no benefit.
+impeccable-main/
+
+# ---- Scratch / staging areas ----
+# Anything you have already decided to throw away, plus editor backups made
+# before a rewrite. If a "_to_delete" folder is still here next sync, delete it.
+_to_delete/
+*.original.ipynb
+*.bak
+
+# ---- Media samples ----
+# Recordings streamed by the video-search backend. Regenerable, and large.
+**/backend/media/*
+!**/backend/media/README.md
+
 # ---- Model / data artifacts (uncomment if these get large) ----
 # *.h5
 # *.pkl
