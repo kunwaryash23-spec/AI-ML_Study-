@@ -6,7 +6,7 @@ Working repo for my AI/ML engineering study. Python, scikit-learn, pandas, and n
 
 | Path | What's in it |
 |---|---|
-| `Day_1/` … `Day_28/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
+| `Day_1/` … `Day_30/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
 | `Projects/` | Self-directed builds that outgrew a single day. |
 | `Notebooks/` | Larger standalone projects and topic deep-dives that span more than one day. |
 | `datasets/` | Datasets used by the notebooks. |
@@ -32,7 +32,10 @@ Handwritten digits (`load_digits`). Logistic-regression baseline vs. MLP, confus
 Bag-of-words and TF-IDF, cosine similarity from scratch, a sliding-window RAG pipeline over a PDF (TF-IDF → TruncatedSVD → Normalizer), then retrieval-augmented generation against a Gemini endpoint with an adversarially tested guardrail.
 
 **Days 27–28 — PyTorch**
-Tensors and autograd by hand (manual forward/backward/step loop), then the same loop rebuilt with `nn.Linear`, `nn.MSELoss`, and `torch.optim.SGD`. A `nn.Sequential` MLP on `load_digits` with `CrossEntropyLoss`. Reranking of PDF chunks started.
+Tensors and autograd by hand (manual forward/backward/step loop), then the same loop rebuilt with `nn.Linear`, `nn.MSELoss`, and `torch.optim.SGD`. A `nn.Sequential` MLP on `load_digits` with `CrossEntropyLoss`. Reranking of PDF chunks started. Day 28 later re-run on `torch.optim.Adam` to compare convergence against SGD.
+
+**Days 29–30 — embeddings and tokenization**
+`nn.Embedding` as a trainable lookup table, mean pooling as a sentence encoder, and a small `nn.Module` sentiment classifier trained end to end on a hand-built vocabulary (`Day_29/sentiment_checker.ipynb`). Byte-pair-encoding tokenizers started with HuggingFace `tokenizers` (`Day_30/Tokenizer.ipynb`).
 
 **Projects — RAG Lyrics Generator**
 Timestamped transcript search, shipped as a FastAPI backend (`video-search/backend/transcript_search.py`) with a React + TypeScript frontend. `RAG_lyrics.ipynb` imports that engine and serves as the evaluation harness — gold query set, `chunk_size` sweep, TF-IDF vs LSA, score-threshold histogram.

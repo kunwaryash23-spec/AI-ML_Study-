@@ -13,3 +13,4 @@ These are written automatically by the daily GitHub sync task. On days with no n
 | [2026-08-13](2026-08-13.md) | Days 23–26 + first project. TF-IDF → embeddings → RAG → LLM call; lyrics retriever. **Leaked API key scrubbed — rotate it.** |
 | [2026-08-13](2026-08-13.md#2026-08-13--sync-2-0933) | *(sync 2)* No new work. Ignored a stray 17 MB zip; key rotation + `.env` still outstanding. |
 | [2026-08-15](2026-08-15.md) | Days 27–28 — PyTorch from autograd up to `nn.Sequential` on digits. Lyrics project shipped as a FastAPI + React app; notebook became an eval harness. **Test accuracy computed but never printed.** |
+| [2026-08-19](2026-08-19.md) | Days 29–30 — first embeddings: `nn.Embedding` + mean pooling → sentiment net. BPE tokenizer started. Day 28 re-run on Adam. **Day 28 scaler commented out — notebook no longer reproducible.** |
