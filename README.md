@@ -6,7 +6,7 @@ Working repo for my AI/ML engineering study. Python, scikit-learn, pandas, and n
 
 | Path | What's in it |
 |---|---|
-| `Day_1/` … `Day_32/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
+| `Day_1/` … `Day_34/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
 | `Projects/` | Self-directed builds that outgrew a single day. |
 | `Notebooks/` | Larger standalone projects and topic deep-dives that span more than one day. |
 | `datasets/` | Datasets used by the notebooks. |
@@ -40,6 +40,9 @@ Tensors and autograd by hand (manual forward/backward/step loop), then the same 
 **Days 31–32 — vector databases**
 Retrieval moved out of hand-written cosine similarity and into ChromaDB: LSA embeddings (TF-IDF → `TruncatedSVD`) fitted once and reused via `.transform()`, collections created with an explicit cosine space, and `col.query()` for nearest-neighbour search over 287 review chunks (`Day_31/RAG_Again.ipynb`) and over a chunked PDF (`Day_32/RAG_Chroma_Syllabus.ipynb`). Hybrid keyword + vector search with an `alpha` blend covered in class (`Notebooks/RAG_again_wtih_chroma.ipynb`).
 
+**Days 33–34 — agents**
+The model stops generating text and starts calling functions. `@tool`-decorated Python handed to `create_agent`, with the agent loop hand-rolled first (`Day_33/tool_calling_agent.ipynb`) so the abstraction replaces something already understood. An AST-whitelist `safe_eval` instead of `eval()` — with a live arbitrary-code-execution demo two cells later showing why. Human-in-the-loop confirmation on a destructive `delete_file` tool, and a `recursion_limit` guard on the loop. A 19-page PDF chunked with page-number metadata into a persistent ChromaDB collection (`all-MiniLM-L6-v2`, cosine space) and wrapped as a `search_pdf` tool (`Day_33/Agentic_RAG.ipynb`). Then memory (`Day_34/agent_with_memory.ipynb`): a `thread_id` checkpointer for conversation history, and a SQLite notes table with `save_note`/`list_notes`/`delete_note` for facts that outlive the process — short-term vs. long-term memory, side by side.
+
 **Projects — RAG Lyrics Generator**
 Timestamped transcript search, shipped as a FastAPI backend (`video-search/backend/transcript_search.py`) with a React + TypeScript frontend. `RAG_lyrics.ipynb` imports that engine and serves as the evaluation harness — gold query set, `chunk_size` sweep, TF-IDF vs LSA, score-threshold histogram.
 
@@ -57,7 +60,8 @@ A few things worth cleaning up when there's time:
 
 - Day folders jump from `Day_11` to `Day_21` — the days in between live in `Notebooks/` under topic names rather than day numbers. Worth deciding on one convention.
 - `Notebooks/Untitled.ipynb` needs a real name.
-- `requirements.txt` is a full `pip freeze` from 21 July saved as UTF-16 — it renders as garbage and is missing `chromadb`, `tokenizers`, `transformers`, `pymupdf` and `torch`. Regenerate as UTF-8, or hand-write a short list of only what's actually imported.
+- API keys keep arriving inline in new notebooks copied from class demos. Four scrubbed so far; five more still sit in committed history and need a `git filter-repo` pass.
+- `Day_33/Agentic_RAG.ipynb` defines a search tool but never hands it to a model — the two halves of an agentic RAG live in the same folder, unconnected.
 - New notebooks belong in a `Day_NN/` folder, not the repo root — the daily sync will file stray root notebooks into the current day folder.
 - `Notebooks/notebooks-20260731T105803Z-1-001.zip` is a downloaded archive; if it's already extracted, it can go.
 - `csv files/` and `datasets/` overlap — consolidating them under `datasets/` would simplify paths.

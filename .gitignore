@@ -95,3 +95,16 @@ _to_delete/
 # *.pkl
 # *.joblib
 # *.ckpt
+
+# ---- Vector store indexes ----
+# Chroma writes an HNSW index + sqlite file to disk. It is a build artifact:
+# re-running the ingest cell rebuilds it from the source PDF in seconds.
+# Committing it means multi-MB binary diffs on every re-run.
+chroma_db/
+**/chroma_db/
+
+# ---- Local scratch databases ----
+# notes.db is the agent-memory sandbox from Day 34. It holds throwaway rows,
+# and the schema is recreated by init_db() on import.
+notes.db
+**/notes.db
