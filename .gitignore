@@ -108,3 +108,11 @@ chroma_db/
 # and the schema is recreated by init_db() on import.
 notes.db
 **/notes.db
+
+# ---- Personal documents ----
+# CVs and resumes carry a phone number, email and address. This repo is a
+# public study log, not a place to publish contact details. Keep them local.
+# If you ever deliberately want one in here: git add -f "path/to/CV.pdf"
+*CV*.pdf
+*cv*.pdf
+*[Rr]esume*.pdf

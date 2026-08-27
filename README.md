@@ -6,7 +6,7 @@ Working repo for my AI/ML engineering study. Python, scikit-learn, pandas, and n
 
 | Path | What's in it |
 |---|---|
-| `Day_1/` … `Day_34/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
+| `Day_1/` … `Day_36/` | Daily study sessions, in order. Each folder holds that day's notebooks and scripts. |
 | `Projects/` | Self-directed builds that outgrew a single day. |
 | `Notebooks/` | Larger standalone projects and topic deep-dives that span more than one day. |
 | `datasets/` | Datasets used by the notebooks. |
@@ -46,6 +46,12 @@ The model stops generating text and starts calling functions. `@tool`-decorated 
 **Day 35 — controlling the agent**
 The toolbelt widens and the behaviour gets specified. `Day_35/rag_agentic.ipynb` gives `create_agent` a `system_prompt` — seven rule sections ending in an explicit `Accuracy → Clarity → Structure → Conciseness` tiebreaker — plus four tools: a fit-once TF-IDF `search_notes` retriever, the AST-whitelist `calculator`, and two toys (`decide_for_me`, `roll_dice`) that exist to show how a `list[str]` argument reaches the model as a JSON array. The model provider moved from Gemini to OpenRouter (`ChatOpenRouter`) with no change to the tools or the checkpointer. Note: the notebook does not currently survive Restart & Run All — see `logs/2026-08-26.md`.
 
+**Day 36 — stitching the pieces together**
+`Day_36/stich_it_all_together.ipynb` starts assembling PDF text extraction, the AST `calculator` and a TF-IDF retriever into a single agent. Scaffolding only so far — it does not survive Restart & Run All (see `logs/2026-08-27.md`).
+
+**Projects — AI Blog Search (agentic RAG)**
+`Projects/ai_blog_search_v1/` — a Streamlit app that indexes any public blog URL and answers questions about it. `WebBaseLoader` → 500-char chunks → Gemini `gemini-embedding-001` embeddings → Qdrant Cloud. The interesting part is the graph: a hand-built LangGraph state machine implementing **Corrective RAG** — an `agent` node that decides whether to retrieve, a `ToolNode` retriever, a relevance grader as a conditional edge (`with_structured_output` against a one-field Pydantic model), and a `rewrite` node that rephrases the question and loops back when the retrieved chunks are judged irrelevant. The first retrieval pipeline in this repo that can notice it retrieved the wrong thing and try again. Dependencies are fully pinned. Note: `main()` currently answers via a plain retrieve-and-prompt fallback and never invokes the graph — see `logs/2026-08-27.md`.
+
 **Projects — RAG Lyrics Generator**
 Timestamped transcript search, shipped as a FastAPI backend (`video-search/backend/transcript_search.py`) with a React + TypeScript frontend. `RAG_lyrics.ipynb` imports that engine and serves as the evaluation harness — gold query set, `chunk_size` sweep, TF-IDF vs LSA, score-threshold histogram.
 
@@ -63,7 +69,8 @@ A few things worth cleaning up when there's time:
 
 - Day folders jump from `Day_11` to `Day_21` — the days in between live in `Notebooks/` under topic names rather than day numbers. Worth deciding on one convention.
 - `Notebooks/Untitled.ipynb` needs a real name.
-- API keys keep arriving inline in new notebooks copied from class demos. Four scrubbed so far; five more still sit in committed history and need a `git filter-repo` pass.
+- API keys keep arriving inline in new notebooks copied from class demos. Six scrubbed so far; five more still sit in committed history and need a `git filter-repo` pass. Fix at the source: `load_dotenv()` plus an `assert os.getenv(...)` at the top of every notebook, so a missing key fails loudly instead of tempting a paste.
+- `_to_delete/` has been sitting there since 2026-08-24. If nothing in it matters, delete it.
 - `Day_33/Agentic_RAG.ipynb` defines a search tool but never hands it to a model — the two halves of an agentic RAG live in the same folder, unconnected.
 - New notebooks belong in a `Day_NN/` folder, not the repo root — the daily sync will file stray root notebooks into the current day folder.
 - `Notebooks/notebooks-20260731T105803Z-1-001.zip` is a downloaded archive; if it's already extracted, it can go.
